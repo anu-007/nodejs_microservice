@@ -1,0 +1,15 @@
+{
+  "name": "hackerbay_nodejs_test",
+  "version": "1.0.0",
+  "description": "a stateless microservice for nodejs test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anu-007",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1"
+  }
+}
