@@ -31,7 +31,7 @@ app.post('/thumb', setToken, verifyToken, (req, res) => {
        })
 });
 
-app.post('/ptch', verifyToken, (req, res) => {
+app.post('/ptch', setToken, (req, res) => {
     jwt.verify(req.token, 'the lost world', (err, authData) => {
         if(err) {
             res.sendStatus(403);
@@ -91,6 +91,6 @@ function verifyToken(req, res, next) {
     });
 }
 
-var resizeTransform = sharp().resize(300, 300).max();
+module.exports = app;
 
 app.listen(4000, () => console.log('server running on port 4000'));

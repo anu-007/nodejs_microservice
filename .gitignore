@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules/
+thumbnails/*
 
 *.DS_Store
 .AppleDouble
