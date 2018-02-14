@@ -1,7 +1,11 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const sharp = require('sharp');
+const download = require('image-downloader');
 
 const app = express();
+
+app.use(express.static('./thumbnails'));
 
 app.get('/', (req, res) => {
     res.json({
@@ -9,7 +13,25 @@ app.get('/', (req, res) => {
     });
 });
 
-app.post('/thumb', verifyToken, (req, res) => {
+app.post('/thumb', setToken, verifyToken, (req, res) => {
+    options = {
+        url: 'https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png',
+        dest: __dirname + '/thumbnails/'
+    };
+       
+    download.image(options)
+       .then(({ filename, image }) => {
+         sharp(image)
+            .resize(50, 50)
+            .toFile(filename, function(err) {
+                res.sendFile(filename);
+            });
+       }).catch((err) => {
+         throw err
+       })
+});
+
+app.post('/ptch', verifyToken, (req, res) => {
     jwt.verify(req.token, 'the lost world', (err, authData) => {
         if(err) {
             res.sendStatus(403);
@@ -40,7 +62,7 @@ app.post('/login', (req, res) => {
 // Authorization: Bearer <access_token>
 
 //Verify token
-function verifyToken(req, res, next) {
+function setToken(req, res, next) {
     //get auth header value
     const bearerHeader = req.headers['authorization'];
     // check if bearer is undefined
@@ -58,5 +80,17 @@ function verifyToken(req, res, next) {
         res.sendStatus(403);
     }
 }
+
+function verifyToken(req, res, next) {
+    jwt.verify(req.token, 'the lost world', (err) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            next();
+        }
+    });
+}
+
+var resizeTransform = sharp().resize(300, 300).max();
 
 app.listen(4000, () => console.log('server running on port 4000'));
