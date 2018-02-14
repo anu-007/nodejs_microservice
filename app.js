@@ -45,6 +45,7 @@ app.post('/ptch', setToken, (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+    console.log(req.body.user);
     //Mock user login
     const user = {
         username: 'tom',
@@ -93,4 +94,4 @@ function verifyToken(req, res, next) {
 
 module.exports = app;
 
-app.listen(4000, () => console.log('server running on port 4000'));
+app.listen(4000, () => {console.log('server running on port 4000')});
