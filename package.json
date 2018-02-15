@@ -4,7 +4,7 @@
   "description": "a stateless microservice for nodejs test",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "start": "nodemon"
   },
   "author": "anu-007",
