@@ -67,9 +67,7 @@ app.post('/thumb', setToken, verifyToken, (req, res) => {
 
 app.post('/ptch', setToken, verifyToken, (req, res) => {
     const patch = jsonpatch.apply(req.body, [{ op: 'add', path: '/foo', value: 'bar' },
-                                        { op: 'replace', path: '/baz', value: 'boo' },
                                         { op: 'add', path: '/hello', value: ['world'] },
-                                        { op: 'remove', path: '/foo' },
                                     ]);
     res.json(patch);
 });
