@@ -38,14 +38,14 @@ describe('Thumbnail microservice Testing', () => {
     });
 
     describe('testing for protected routes', () => {
-        var token = '';
+        var token = '', result;
         beforeEach(function(done) {
             chai.request(server)
               .post('/login')
               .type('json')
               .send('{"username":"admin","password":"admin"}')
               .end(function(err, res) {
-                var result = JSON.parse(res.text);
+                result = JSON.parse(res.text);
                 token = result.token;
                 done();
             });

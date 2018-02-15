@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const sharp = require('sharp');
 const download = require('image-downloader');
+const jsonpatch = require('json-patch');
 
 const app = express();
 
@@ -31,21 +32,16 @@ app.post('/thumb', setToken, verifyToken, (req, res) => {
        })
 });
 
-app.post('/ptch', setToken, (req, res) => {
-    jwt.verify(req.token, 'the lost world', (err, authData) => {
-        if(err) {
-            res.sendStatus(403);
-        } else {
-            res.json({
-                message: 'Post created',
-                authData
-            });
-        }
-    });
+app.post('/ptch', setToken, verifyToken, (req, res) => {
+    const patch = jsonpatch.apply({baz: "qux", foo: "bar"}, [ {op: 'add', path: '/foo', value: 'bar'},
+                                        { op: "replace", path: "/baz", value: "boo" },
+                                        { op: "add", path: "/hello", value: ["world"] },
+                                        { op: "remove", path: "/foo"}
+                                    ]);
+    res.send(patch);
 });
 
 app.post('/login', (req, res) => {
-    console.log(req.body.user);
     //Mock user login
     const user = {
         username: 'tom',
