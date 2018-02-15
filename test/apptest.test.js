@@ -16,7 +16,7 @@ describe('Thumbnail microservice Testing', () => {
                     res.body.should.be.a('object');
                     res.body.message.should.eql('welcome to the microservice: go to /login route and enter username and password');
                 done();
-                });
+            });
         });
     });
 
@@ -108,7 +108,7 @@ describe('Thumbnail microservice Testing', () => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 done();
-              });
+            });
         });
     });
 });
