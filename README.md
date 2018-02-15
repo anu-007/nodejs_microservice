@@ -19,6 +19,7 @@ A simple thumbnail generator microservice which generates thumbnails of size 50x
 
 ## Running
 * `npm start`
+* test with postman for the following end-points
 * Visit app at [http://localhost:4000.](http://localhost:4000)
 
 ## Running tests
