@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --exit",
-    "coverage": "istanbul cover -x *.test.js _mocha --exit -- -R spec test/apptest.test.js",
+    "coverage": "istanbul cover _mocha",
     "showcoverage": "open coverage/lcov-report/index.html",
     "start": "node app.js"
   },
