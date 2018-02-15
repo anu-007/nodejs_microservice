@@ -1,6 +1,6 @@
 # Thumbnail generator microservice
 
-[![travis build](https://img.shields.io/travis/USER/REPO.svg)](https://travis-ci.org/anu-007/nodejs_microservice)
+[![travis build](https://travis-ci.org/anu-007/nodejs_microservice.svg?branch=master)](https://travis-ci.org/anu-007/nodejs_microservice)
 
 A simple thumbnail generator microservice which generates thumbnails of size 50x50. It uses jwt authorization for its protected routes.
 
