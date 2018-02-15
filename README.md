@@ -26,71 +26,71 @@ A simple thumbnail generator microservice which generates thumbnails of size 50x
 use any API testing tools like postman to test this API.
 
 GET  `/`
-* Request
-    Headers
+1. Request
+    * Headers
         `content-Type: application/json`
-* Response
-    Headers
+2. Response
+    * Headers
         `content-Type: application/json; charset=utf-8`
-    Body
+    * Body
     ```
     {
         "message": "welcome to the microservice: go to /login route and enter username and password"
     }
     ```
 POST `/login`
-* Request
-    Headers
+1. Request
+    * Headers
         `content-Type: application/json`
-    Body
+    * Body
     ```
     {
 	    "user"	:	<any-usernaem>,
 	    "password"	:	<any-password>
     }
     ```
-* Response
-    Headers
+2. Response
+    * Headers
         `content-Type: application/json; charset=utf-8`
-    Body
+    * Body
     ```
     {
         "token": <jwt-token>
     }
     ```
 POST `/ptch`
-* Request
-    Headers
+1. Request
+    * Headers
         `content-Type: application/json`
         `Authorization: bearer <access-token>`
-    Body
+    * Body
     ```
     {
         <any-key>: <any-value>
     }
     ```
-* Response
-    Headers
+2. Response
+    * Headers
         `content-Type: application/json; charset=utf-8`
-    Body
+    * Body
     ```
     {
         <patched-key>: <patched-value>
     }
     ```
 POST `/thumb`
-* Request
-    Headers
+1. Request
+    * Headers
         `content-Type: application/json`
         `Authorization: bearer <access-token>`
-    Body
+    * Body
     ```
     {
         "url": <any-image-url>
     }
     ```
-* Response
-    Headers
+1. Response
+    * Headers
         `content-Type: image/<type-of-image>`
-    Body
+    * Body
         `<image>`
