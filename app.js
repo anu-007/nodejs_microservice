@@ -5,12 +5,13 @@ const download = require('image-downloader');
 const jsonpatch = require('json-patch');
 const bodyParser = require('body-parser');
 const path = require('path');
+const morgan = require('morgan');
 
 const app = express();
 
 app.use(express.static('./thumbnails'));
 app.use(bodyParser.json());
-
+app.use(morgan('dev'));
 // FORMAT OF TOKEN
 // Authorization: Bearer <access_token>
 
