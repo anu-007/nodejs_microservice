@@ -61,7 +61,7 @@ app.post('/thumb', setToken, verifyToken, (req, res) => {
                 res.sendFile(filename);
             });
        }).catch((err) => {
-         throw err;
+            throw err;
        });
 });
 

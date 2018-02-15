@@ -24,6 +24,9 @@ A simple thumbnail generator microservice which generates thumbnails of size 50x
 ## Running tests
 * `npm test`
 
+## Running coverage
+* `npm run coverage`
+
 # API endpoints
 use any API testing tools like postman to test this API.
 

@@ -4,7 +4,7 @@
   "description": "a stateless microservice for nodejs test",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --exit",
+    "test": "mocha",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive",
     "showcoverage": "open coverage/lcov-report/index.html",
     "start": "node app.js"
@@ -26,6 +26,6 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.0.0"
+    "mocha": "3.0.0"
   }
 }
