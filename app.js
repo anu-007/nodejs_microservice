@@ -3,10 +3,12 @@ const jwt = require('jsonwebtoken');
 const sharp = require('sharp');
 const download = require('image-downloader');
 const jsonpatch = require('json-patch');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(express.static('./thumbnails'));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.json({
@@ -15,8 +17,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/thumb', setToken, verifyToken, (req, res) => {
-    options = {
-        url: 'https://upload.wikimedia.org/wikipedia/en/7/7d/Minions_characters.png',
+    var options = {
+        url: req.body.url,
         dest: __dirname + '/thumbnails/'
     };
        
@@ -24,28 +26,28 @@ app.post('/thumb', setToken, verifyToken, (req, res) => {
        .then(({ filename, image }) => {
          sharp(image)
             .resize(50, 50)
-            .toFile(filename, function(err) {
+            .toFile(filename, function() {
                 res.sendFile(filename);
             });
        }).catch((err) => {
-         throw err
-       })
+         throw err;
+       });
 });
 
 app.post('/ptch', setToken, verifyToken, (req, res) => {
-    const patch = jsonpatch.apply({baz: "qux", foo: "bar"}, [ {op: 'add', path: '/foo', value: 'bar'},
-                                        { op: "replace", path: "/baz", value: "boo" },
-                                        { op: "add", path: "/hello", value: ["world"] },
-                                        { op: "remove", path: "/foo"}
+    const patch = jsonpatch.apply(req.body, [ {op: 'add', path: '/foo', value: 'bar'},
+                                        { op: 'replace', path: '/baz', value: 'boo' },
+                                        { op: 'add', path: '/hello', value: ['world'] },
+                                        { op: 'remove', path: '/foo'}
                                     ]);
-    res.send(patch);
+    res.json(patch);
 });
 
 app.post('/login', (req, res) => {
     //Mock user login
     const user = {
-        username: 'tom',
-        password: 'dale'
+        username: req.body.user,
+        password: req.body.password
     };
 
     jwt.sign({user}, 'the lost world', { expiresIn: '120s' }, (err, token) => {
@@ -90,4 +92,4 @@ function verifyToken(req, res, next) {
 
 module.exports = app;
 
-app.listen(4000, () => {console.log('server running on port 4000')});
+app.listen(4000, () => {console.log('server running on port 4000');});

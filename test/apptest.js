@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'test';
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../app');
@@ -76,7 +74,6 @@ describe('Thumbnail microservice Testing', () => {
               .set('Authorization', 'Bearer ' + token)
               .end((err, res) => {
                 res.should.have.status(200);
-                //res.body.should.be.a('object');
                 done();
             });
         });
@@ -103,6 +100,8 @@ describe('Thumbnail microservice Testing', () => {
         it('should be able to consume the route /ptch since token valid was sent', function(done) {
             chai.request(server)
               .post('/ptch')
+              .type('json')
+              .send('{"bax":"qux","foo":"bar"}')
               .set('Authorization', 'Bearer ' + token)
               .end((err, res) => {
                 res.should.have.status(200);
