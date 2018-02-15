@@ -1,29 +1,16 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "rules": {
-        "indent": [
-            2,
-            "tab"
-        ],
-        "linebreak-style": [
+    "extends": "airbnb-base",
+    "rules":{
+        "indent": [1, "tab"],
+        "no-tabs": 0,
+        "no-unused-vars": [
             "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
+            {
+              "varsIgnorePattern": "describe|it"
+            }
         ]
-    }
+    },
+    "env": {
+        "mocha": true
+    }    
 }
