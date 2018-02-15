@@ -71,6 +71,8 @@ describe('Thumbnail microservice Testing', () => {
         it('should be able to consume the route /thumb since token valid was sent', function(done) {
             chai.request(server)
               .post('/thumb')
+              .type('json')
+              .send('{"url":"https://cdn.pixabay.com/photo/2017/07/29/20/18/minions-2552584_960_720.jpg"}')
               .set('Authorization', 'Bearer ' + token)
               .end((err, res) => {
                 res.should.have.status(200);
@@ -101,7 +103,7 @@ describe('Thumbnail microservice Testing', () => {
             chai.request(server)
               .post('/ptch')
               .type('json')
-              .send('{"bax":"qux","foo":"bar"}')
+              .send('{"baz":"qux","foo":"bar"}')
               .set('Authorization', 'Bearer ' + token)
               .end((err, res) => {
                 res.should.have.status(200);
