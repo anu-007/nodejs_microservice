@@ -2,7 +2,9 @@
 
 [![travis build](https://travis-ci.org/anu-007/nodejs_microservice.svg?branch=master)](https://travis-ci.org/anu-007/nodejs_microservice)
 
-[dockerImage](https://hub.docker.com/r/poxito/initialdoc/)
+docker image - [image](https://hub.docker.com/r/poxito/initialdoc/)
+
+demo app url - [app](https://evening-brook-66750.herokuapp.com/)
 
 A simple thumbnail generator microservice which generates thumbnails of size 50x50. It uses jwt authorization for its protected routes.
 
@@ -29,7 +31,7 @@ A simple thumbnail generator microservice which generates thumbnails of size 50x
 * `npm run coverage`
 
 # API endpoints
-use any API testing tools like postman to test this API.
+use any API testing tools like postman to test this API. App is hosted at https://evening-brook-66750.herokuapp.com if you are not testing on localhost mahe sure to append this url before the API requests.
 
 GET  `/`
 1. Request
@@ -81,7 +83,7 @@ POST `/ptch`
     * Body
     ```
     {
-        <patched-key>: <patched-value>
+        <patched-keys>: <patched-values>
     }
     ```
 POST `/thumb`
