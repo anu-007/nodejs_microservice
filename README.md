@@ -2,6 +2,8 @@
 
 [![travis build](https://travis-ci.org/anu-007/nodejs_microservice.svg?branch=master)](https://travis-ci.org/anu-007/nodejs_microservice)
 
+[dockerImage](https://hub.docker.com/r/poxito/initialdoc/)
+
 A simple thumbnail generator microservice which generates thumbnails of size 50x50. It uses jwt authorization for its protected routes.
 
 # Installation

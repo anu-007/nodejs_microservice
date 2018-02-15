@@ -7,7 +7,7 @@
     "test": "mocha --exit",
     "coverage": "istanbul cover -x *.test.js _mocha --exit -- -R spec test/apptest.test.js",
     "showcoverage": "open coverage/lcov-report/index.html",
-    "start": "nodemon"
+    "start": "node app.js"
   },
   "author": "anu-007",
   "license": "ISC",
